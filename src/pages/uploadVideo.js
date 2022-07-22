@@ -14,13 +14,14 @@ export default function UploadVideo() {
 
     const handleSubmit = async () => {
         if (!video) {
-            alert("Please choose a file first!")
+            alert("Válassz egy videót elöször!");
             return;
         } else {
             const docRef = await addDoc(collection(db, "videos"), {
                 title: title,
                 description: description,
-                location: `videos/${video.name}`
+                location: `videos/${video.name}`,
+                comments: []
             });
             console.log("Document written with ID: ", docRef.id);
             const storageRef = ref(storage, `/videos/${video.name}`)
@@ -37,7 +38,7 @@ export default function UploadVideo() {
                 },
                 (err) => console.log(err),
                 () => {
-                    alert("Video uploaded successfully! Redirecting to home page...");
+                    alert("Videó sikeresen feltöltve! Visszairányítás a főoldalra...");
                     window.location.href = "/";
                 }
             );
@@ -48,19 +49,19 @@ export default function UploadVideo() {
     return (
         <div className="UploadVideo">
             <Link to="/">
-                <button className="backhome">Go back to home page</button>
+                <button className="backhome">Vissza a főoldalra</button>
             </Link>
-            <h1>Upload a video</h1>
-            <label>Title:</label>
+            <h1>Tölts fel egy videót</h1>
+            <label>Cím:</label>
             <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
             <br />
-            <label>Description:</label>
+            <label>Leírás:</label>
             <textarea name="description" onChange={(e) => setDescription(e.target.value)} />
             <br />
-            <label>Video:</label>
+            <label>Videó:</label>
             <input type="file" accept="video/*" name="video" onChange={(e) => setVideo(e.target.files[0])} />
             <br />
-            <button onClick={handleSubmit}>Upload</button>
+            <button onClick={handleSubmit}>Feltöltés</button>
             <progress value={progress} max="100" />
         </div>
     )

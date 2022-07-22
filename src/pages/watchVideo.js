@@ -18,7 +18,9 @@ export default function WatchVideo() {
       setVideo(docSnap.data());
       getVideoFromBucket();
     } else {
-      alert("Video not found! Go back to the home page to see all videos!");
+      alert(
+        "Videó nem található! Fáradj vissza a főoldalra, hogy láthasd az összes videót!"
+      );
     }
   };
 
@@ -34,13 +36,23 @@ export default function WatchVideo() {
       <h1>{video.title}</h1>
       <p>{video.description}</p>
       <a href={videoURL} download className="downloadbtt">
-        Download this video...
+        Videó letöltése...
       </a>
       <br />
       <br />
       <Link to="/">
-        <button className="backhome">Go back to home page</button>
+        <button className="backhome">Vissza a főoldalra</button>
       </Link>
+      <hr />
+      <h1>Kommentek</h1>
+      {video.comments.map((comment) => (
+        <>
+          <div>
+            <p>{comment}</p>
+          </div>
+          <hr />
+        </>
+      ))}
     </div>
   );
 }

@@ -17,8 +17,8 @@ export default function App() {
   };
   return (
     <div className="App">
-      <Link to="/upload"><button>Upload a video</button></Link>
-      <h1>All Videos List</h1>
+      <Link to="/upload"><button>Videó feltöltése</button></Link>
+      <h1>Összes videó ezen a weboldalon</h1>
       <div className="grid">
         {videos.map((video) => (
           <Link to ={`/watch/${video.id}`} key={video.id}>
