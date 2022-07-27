@@ -10,7 +10,7 @@ export default function WatchVideo() {
   const [videoURL, setVideoURL] = useState("");
   useEffect(() => {
     getVideo();
-  });
+  }, []);
   const getVideo = async () => {
     const docRef = doc(db, "videos", videoId.videoId);
     const docSnap = await getDoc(docRef);

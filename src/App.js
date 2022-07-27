@@ -8,7 +8,7 @@ export default function App() {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     getAllVideos();
-  });
+  }, []);
 
   const getAllVideos = async () => {
 
