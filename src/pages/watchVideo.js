@@ -44,15 +44,6 @@ export default function WatchVideo() {
         <button className="backhome">Vissza a főoldalra</button>
       </Link>
       <hr />
-      <h1>Kommentek</h1>
-      {video.comments.map((comment) => (
-        <>
-          <div>
-            <p>{comment}</p>
-          </div>
-          <hr />
-        </>
-      ))}
     </div>
   );
 }
